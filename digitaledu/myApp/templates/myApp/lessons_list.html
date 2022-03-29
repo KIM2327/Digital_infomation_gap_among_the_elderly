@@ -1,0 +1,36 @@
+{% extends 'myApp/lessons_base.html' %}
+
+{% block content %}
+
+<div class="container pt-3">
+    <h2 class="text-center">{{loc_kr}}</h2>
+    <hr>
+    
+    <table class="table table-sm table-striped border">
+      <thead>
+        <tr>
+          {% for info_type in infoes %}
+          <th>{{info_type}}</th>
+          {% endfor %}
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for lesson in lessons %}
+          <tr>
+            {% for info in lesson %}
+            <td>{{info}}</td>
+            {% endfor %}
+            <td><a href="/lessons/{{loc}}/{{pg}}/{{forloop.counter}}" class="btn btn-info text-white btn-sm">자세히</a></td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+</div>
+<div class="container text-center">
+    {% for num in pg_range %}
+    <a href="/lessons/{{loc}}/{{num}}" class="btn btn-outline-dark text-dark btn-sm" style="margin-left: 10px;">{{num}}</a>
+    {% endfor %}
+</div>
+
+{% endblock %}
